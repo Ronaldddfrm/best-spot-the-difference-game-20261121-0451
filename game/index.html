@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the Difference — Three Hidden Worlds</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">◐</span>
+      <div>
+        <h1>Spot the Difference</h1>
+        <p class="tagline">Three hidden worlds &middot; find every change before the clock runs out</p>
+      </div>
+    </div>
+    <div id="hud" aria-live="polite">
+      <div class="hud-box"><span class="hud-label">Found</span><span id="found-count">0 / 7</span></div>
+      <div class="hud-box"><span class="hud-label">Score</span><span id="score">0</span></div>
+      <div class="hud-box"><span class="hud-label">Hints</span><span id="hints-left">3</span></div>
+      <div class="hud-box wide"><span class="hud-label">Time</span><span id="time-left">3:00</span></div>
+    </div>
+  </header>
+
+  <div id="timer-track"><div id="timer-fill"></div></div>
+
+  <nav id="level-bar" aria-label="Choose a scene">
+    <button class="level-btn active" data-level="0">1 &middot; Sunny Garden <span class="diff-tag easy">Easy &middot; 7</span></button>
+    <button class="level-btn" data-level="1">2 &middot; Harbour at Dusk <span class="diff-tag medium">Medium &middot; 8</span></button>
+    <button class="level-btn" data-level="2">3 &middot; Moon Observatory <span class="diff-tag hard">Hard &middot; 10</span></button>
+  </nav>
+
+  <main id="panels">
+    <figure class="panel">
+      <figcaption><span class="panel-letter">A</span> Left &mdash; the original</figcaption>
+      <canvas id="canvas-left" width="560" height="420" aria-label="Left picture"></canvas>
+    </figure>
+    <div id="versus" aria-hidden="true">VS</div>
+    <figure class="panel">
+      <figcaption><span class="panel-letter">B</span> Right &mdash; spot the changes</figcaption>
+      <canvas id="canvas-right" width="560" height="420" aria-label="Right picture"></canvas>
+    </figure>
+  </main>
+
+  <div id="message" role="status">Click a difference on either picture. A wrong click costs 5 seconds.</div>
+
+  <footer id="controls">
+    <button id="btn-hint" class="ctl">💡 Hint <kbd>H</kbd></button>
+    <button id="btn-restart" class="ctl">↻ New round <kbd>R</kbd></button>
+    <button id="btn-sound" class="ctl">♪ Sound: on</button>
+    <span id="combo" class="combo"></span>
+    <span id="streak-note">Streak bonus: find 3 in a row without a miss for +50.</span>
+  </footer>
+
+  <div id="overlay" class="hidden">
+    <div id="overlay-card">
+      <h2 id="overlay-title"></h2>
+      <p id="overlay-text"></p>
+      <div id="overlay-stars" aria-hidden="true"></div>
+      <div class="overlay-btns">
+        <button id="btn-overlay-next" class="ctl primary">Next scene →</button>
+        <button id="btn-overlay-replay" class="ctl">Play again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p id="status" class="sr-only" role="status" aria-live="polite"></p>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
